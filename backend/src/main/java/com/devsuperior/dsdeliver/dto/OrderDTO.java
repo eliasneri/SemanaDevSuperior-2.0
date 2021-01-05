@@ -2,6 +2,9 @@ package com.devsuperior.dsdeliver.dto;
 
 import java.io.Serializable;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import com.devsuperior.dsdeliver.entities.Order;
 import com.devsuperior.dsdeliver.enums.OrderStatus;
@@ -17,6 +20,8 @@ public class OrderDTO implements Serializable{
 	private OrderStatus status;
 	private Double total;
 	
+	private List<ProductDTO> products = new ArrayList<>();
+	
 	public OrderDTO() {
 	}
 
@@ -29,6 +34,7 @@ public class OrderDTO implements Serializable{
 		this.moment = moment;
 		this.status = status;
 		this.total = total;
+		
 	}
 	
 	public OrderDTO(Order entity) {
@@ -39,6 +45,8 @@ public class OrderDTO implements Serializable{
 		moment = entity.getMoment();
 		status = entity.getStatus();
 		total = entity.getTotal();
+		products = entity.getProducts().stream().map(x -> new ProductDTO(x)).collect(Collectors.toList());
+		
 	}
 
 	public Long getId() {
@@ -96,6 +104,12 @@ public class OrderDTO implements Serializable{
 	public void setTotal(Double total) {
 		this.total = total;
 	}
+
+	public List<ProductDTO> getProducts() {
+		return products;
+	}
+	
+
 	
 	
 	
