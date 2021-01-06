@@ -78,7 +78,9 @@
       align-items: center;
     }
   
-    
+    .home-image {
+      text-align: center;
+    }
   
     .home-image svg {
       width: 80%;
