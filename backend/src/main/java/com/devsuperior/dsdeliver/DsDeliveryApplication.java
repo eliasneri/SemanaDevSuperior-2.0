@@ -8,6 +8,7 @@ public class DsDeliveryApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DsDeliveryApplication.class, args);
+		System.out.println("Started API");
 	}
 
 }
